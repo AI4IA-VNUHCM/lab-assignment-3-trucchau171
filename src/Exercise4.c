@@ -12,8 +12,43 @@ ______________________________________
 #include <stdlib.h>
 #include <math.h>
 
+int isInc(int arr[], int n)
+{
+	for (int i = 1; i < n; i++)
+	{
+		if (arr[i] < arr[i - 1])
+		{
+			return 0;
+		}
+	}
+	return 1;
+}
+
+int isDec(int arr[], int n)
+{
+	for (int i = 1; i < n; i++)
+	{
+		if (arr[i] > arr[i - 1])
+		{
+			return 0;
+		}
+	}
+	return -1;
+}
+
 int Ex4(int arr[], int n){
-	//Your codes here
+	if (n == 1)
+	{
+		return 1;
+	}
+	else
+	{
+		if (arr[0] <= arr[1])
+		{
+			return isInc(arr, n);
+		}
+		else return isDec(arr, n);
+	}
 	
 }
 
