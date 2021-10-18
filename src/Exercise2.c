@@ -13,8 +13,67 @@ Ex:
 #include <math.h>
 
 void Ex2(int arr[], int n){
-	//Your codes here
 	
+	int even[n], odd[n];
+	int z = 0;
+	int t = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (arr[i] % 2 == 0)
+		{
+			even[z] = arr[i];
+			z++;
+		}
+		else
+		{
+			odd[t] = arr[i];
+			t++;
+		}
+	}
+
+	for (int i = 0; i < t - 1; i++)
+	{
+		for (int j = i + 1; j < t; j++)
+		{
+			if (odd[i] > odd[j])
+			{
+				int temp = odd[i];
+				odd[i] = odd[j];
+				odd[j] = temp;
+			}
+		}
+	}
+
+	for (int i = 0; i < z - 1; i++)
+	{
+		for (int j = i + 1; j < z; j++)
+		{
+			if (even[i] < even[j])
+			{
+				int temp = even[i];
+				even[i] = even[j];
+				even[j] = temp;
+			}
+		}
+	}
+
+	int indexEven = 0;
+	int indexOdd = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (arr[i] % 2 == 0)
+		{
+			// arr[i] = even[indexEven];
+			printf("%d ", even[indexEven]);
+			indexEven++;
+		}
+		else
+		{
+			// arr[i] = odd[indexEven];
+			printf("%d ", odd[indexOdd]);
+			indexOdd++;
+		}
+	}
 }
 
 int main(int argc, char *argv[]) {

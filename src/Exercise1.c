@@ -12,8 +12,16 @@ Ex:
 #include <stdlib.h>
 #include <math.h>
 
-void Ex1(int arr[], int n){
-	//Your codes here
+int Ex1(int arr[], int begin, int end){
+	if (begin >= end)
+	{
+		return 1;
+	}
+	if (arr[begin] == arr[end])
+	{
+		return Ex1(arr, begin + 1, end - 1);
+	}
+	else return 0;
     
 }
 
@@ -25,7 +33,11 @@ int main(int argc, char *argv[]) {
 		testcase[i] = atoi(argv[i+1]);
 	}
 	
-	Ex1(testcase, argc);
+	if (Ex1(testcase, 0, argc-1) == 1)
+	{
+		printf("symmetric");
+	}
+	else printf("asymmetric");
 	
 	return 0;
 }
